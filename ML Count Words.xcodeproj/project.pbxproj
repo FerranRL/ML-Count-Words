@@ -16,6 +16,8 @@
 		7A5A286B2625D0D500361AE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5A28692625D0D500361AE4 /* LaunchScreen.storyboard */; };
 		7A5A28762625D0D500361AE4 /* ML_Count_WordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A28752625D0D500361AE4 /* ML_Count_WordsTests.swift */; };
 		7A5A28812625D0D500361AE4 /* ML_Count_WordsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A28802625D0D500361AE4 /* ML_Count_WordsUITests.swift */; };
+		7A5A289A2626BF1200361AE4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A28992626BF1200361AE4 /* CustomTableViewCell.swift */; };
+		7A5A28A5262704C900361AE4 /* LoadFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A28A4262704C900361AE4 /* LoadFileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		7A5A287C2625D0D500361AE4 /* ML Count WordsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ML Count WordsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5A28802625D0D500361AE4 /* ML_Count_WordsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ML_Count_WordsUITests.swift; sourceTree = "<group>"; };
 		7A5A28822625D0D500361AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A5A28992626BF1200361AE4 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		7A5A28A4262704C900361AE4 /* LoadFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +105,10 @@
 		7A5A285A2625D0D400361AE4 /* ML Count Words */ = {
 			isa = PBXGroup;
 			children = (
+				7A5A28A22627049500361AE4 /* LoadFile */,
+				7A5A28972626BEBC00361AE4 /* Home */,
 				7A5A285B2625D0D400361AE4 /* AppDelegate.swift */,
 				7A5A285D2625D0D400361AE4 /* SceneDelegate.swift */,
-				7A5A285F2625D0D400361AE4 /* ViewController.swift */,
 				7A5A28612625D0D400361AE4 /* Main.storyboard */,
 				7A5A28672625D0D500361AE4 /* Assets.xcassets */,
 				7A5A28692625D0D500361AE4 /* LaunchScreen.storyboard */,
@@ -129,6 +134,47 @@
 				7A5A28822625D0D500361AE4 /* Info.plist */,
 			);
 			path = "ML Count WordsUITests";
+			sourceTree = "<group>";
+		};
+		7A5A28972626BEBC00361AE4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7A5A28A9262704D800361AE4 /* UI */,
+				7A5A28982626BED300361AE4 /* Model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7A5A28982626BED300361AE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A5A28992626BF1200361AE4 /* CustomTableViewCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A5A28A22627049500361AE4 /* LoadFile */ = {
+			isa = PBXGroup;
+			children = (
+				7A5A28A3262704A300361AE4 /* UI */,
+			);
+			path = LoadFile;
+			sourceTree = "<group>";
+		};
+		7A5A28A3262704A300361AE4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7A5A28A4262704C900361AE4 /* LoadFileViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7A5A28A9262704D800361AE4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7A5A285F2625D0D400361AE4 /* ViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A5A28602625D0D400361AE4 /* ViewController.swift in Sources */,
+				7A5A289A2626BF1200361AE4 /* CustomTableViewCell.swift in Sources */,
+				7A5A28A5262704C900361AE4 /* LoadFileViewController.swift in Sources */,
 				7A5A285C2625D0D400361AE4 /* AppDelegate.swift in Sources */,
 				7A5A28662625D0D400361AE4 /* ML_Count_Words.xcdatamodeld in Sources */,
 				7A5A285E2625D0D400361AE4 /* SceneDelegate.swift in Sources */,
@@ -447,7 +495,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.paretsdesign.ML-Count-Words";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paretsdesign.MLCountWords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -466,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.paretsdesign.ML-Count-Words";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paretsdesign.MLCountWords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
