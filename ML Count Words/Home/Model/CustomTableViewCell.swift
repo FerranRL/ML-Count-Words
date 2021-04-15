@@ -51,8 +51,9 @@ class CustomTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .white
         contentView.backgroundColor = UIColor(named: "back_light_green")
-        //contentView.heightAnchor.constraint(equalToConstant: 62).isActive = true
+        
         
         contentView.addSubview(imageCell)
         imageCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true

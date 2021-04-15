@@ -97,9 +97,9 @@ class ViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         button.layer.cornerRadius = 8
         button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(menu(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loadFile(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         return button
         
@@ -122,8 +122,7 @@ class ViewController: UIViewController {
         contentView.axis = .vertical
         contentView.distribution = .fill
         contentView.alignment = .fill
-        //contentView.spacing = 10
-        
+        contentView.backgroundColor = .white
         view.addSubview(contentView)
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -184,7 +183,7 @@ class ViewController: UIViewController {
         
         
         recents.addSubview(tableview)
-        
+        tableview.backgroundColor = .white
         tableview.translatesAutoresizingMaskIntoConstraints = false
         tableview.topAnchor.constraint(equalTo: archivosRecientes.bottomAnchor, constant: 25).isActive = true
         tableview.leadingAnchor.constraint(equalTo: recents.leadingAnchor, constant: 15).isActive = true
@@ -198,6 +197,15 @@ class ViewController: UIViewController {
     
     @objc private func menu(sender: UIButton) {
         print("Menu tapped")
+    }
+    
+    @objc private func loadFile(sender: UIButton) {
+        
+        let storyBoard = UIStoryboard(name: "LoadFile", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "LoadFile")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+        
     }
 
 
