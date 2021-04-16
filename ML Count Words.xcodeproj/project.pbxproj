@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F27692AFBC62FEEE082BC7E /* Pods_ML_Count_Words_ML_Count_WordsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E9B57694BB2110669A4487 /* Pods_ML_Count_Words_ML_Count_WordsUITests.framework */; };
+		3E64BB0B896D5BED2B29C2C6 /* Pods_ML_Count_WordsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2FD9816F9CDBE352A6AE54 /* Pods_ML_Count_WordsTests.framework */; };
+		7A1462602629B5C9001E8E70 /* counting.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A14625F2629B5C9001E8E70 /* counting.json */; };
 		7A5A285C2625D0D400361AE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A285B2625D0D400361AE4 /* AppDelegate.swift */; };
 		7A5A285E2625D0D400361AE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A285D2625D0D400361AE4 /* SceneDelegate.swift */; };
 		7A5A28602625D0D400361AE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A285F2625D0D400361AE4 /* ViewController.swift */; };
@@ -19,6 +22,10 @@
 		7A5A289A2626BF1200361AE4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A28992626BF1200361AE4 /* CustomTableViewCell.swift */; };
 		7A5A28A5262704C900361AE4 /* LoadFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5A28A4262704C900361AE4 /* LoadFileViewController.swift */; };
 		7A5A28AF26270C9900361AE4 /* LoadFile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5A28AE26270C9900361AE4 /* LoadFile.storyboard */; };
+		7AAC875F2629A8EC00136D0A /* ListOfWordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC875E2629A8EC00136D0A /* ListOfWordsTableViewCell.swift */; };
+		7AE1DB082628347A005E91E5 /* WordCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1DB072628347A005E91E5 /* WordCountViewController.swift */; };
+		7AE1DB0A26283491005E91E5 /* WordCount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1DB0926283491005E91E5 /* WordCount.storyboard */; };
+		AE1248FB868122F4A8D245B7 /* Pods_ML_Count_Words.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D8055CB38503862E1F83F /* Pods_ML_Count_Words.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18E37F3B0C31F4F8F6DEBAA0 /* Pods-ML Count WordsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ML Count WordsTests.release.xcconfig"; path = "Target Support Files/Pods-ML Count WordsTests/Pods-ML Count WordsTests.release.xcconfig"; sourceTree = "<group>"; };
+		293C30B33C2E81A9DB40374D /* Pods-ML Count Words.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ML Count Words.debug.xcconfig"; path = "Target Support Files/Pods-ML Count Words/Pods-ML Count Words.debug.xcconfig"; sourceTree = "<group>"; };
+		2B0BF6DA7649EE6338C27167 /* Pods-ML Count WordsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ML Count WordsTests.debug.xcconfig"; path = "Target Support Files/Pods-ML Count WordsTests/Pods-ML Count WordsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		320D8055CB38503862E1F83F /* Pods_ML_Count_Words.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ML_Count_Words.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D2FD9816F9CDBE352A6AE54 /* Pods_ML_Count_WordsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ML_Count_WordsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A14625F2629B5C9001E8E70 /* counting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = counting.json; sourceTree = "<group>"; };
 		7A5A28582625D0D400361AE4 /* ML Count Words.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ML Count Words.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5A285B2625D0D400361AE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A5A285D2625D0D400361AE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +70,13 @@
 		7A5A28992626BF1200361AE4 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		7A5A28A4262704C900361AE4 /* LoadFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFileViewController.swift; sourceTree = "<group>"; };
 		7A5A28AE26270C9900361AE4 /* LoadFile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadFile.storyboard; sourceTree = "<group>"; };
+		7AAC875E2629A8EC00136D0A /* ListOfWordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfWordsTableViewCell.swift; sourceTree = "<group>"; };
+		7AE1DB072628347A005E91E5 /* WordCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCountViewController.swift; sourceTree = "<group>"; };
+		7AE1DB0926283491005E91E5 /* WordCount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordCount.storyboard; sourceTree = "<group>"; };
+		8E7362A40576DC30ACBECC94 /* Pods-ML Count Words-ML Count WordsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ML Count Words-ML Count WordsUITests.debug.xcconfig"; path = "Target Support Files/Pods-ML Count Words-ML Count WordsUITests/Pods-ML Count Words-ML Count WordsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0E9B57694BB2110669A4487 /* Pods_ML_Count_Words_ML_Count_WordsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ML_Count_Words_ML_Count_WordsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4C0390AC9F64DC466B2787 /* Pods-ML Count Words-ML Count WordsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ML Count Words-ML Count WordsUITests.release.xcconfig"; path = "Target Support Files/Pods-ML Count Words-ML Count WordsUITests/Pods-ML Count Words-ML Count WordsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B0235F880381C3EC4D83FFDA /* Pods-ML Count Words.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ML Count Words.release.xcconfig"; path = "Target Support Files/Pods-ML Count Words/Pods-ML Count Words.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE1248FB868122F4A8D245B7 /* Pods_ML_Count_Words.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E64BB0B896D5BED2B29C2C6 /* Pods_ML_Count_WordsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +100,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F27692AFBC62FEEE082BC7E /* Pods_ML_Count_Words_ML_Count_WordsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AB91F6E6CF889AB7962A8B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				320D8055CB38503862E1F83F /* Pods_ML_Count_Words.framework */,
+				A0E9B57694BB2110669A4487 /* Pods_ML_Count_Words_ML_Count_WordsUITests.framework */,
+				3D2FD9816F9CDBE352A6AE54 /* Pods_ML_Count_WordsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A1628AE2629A02800645328 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7AAC875E2629A8EC00136D0A /* ListOfWordsTableViewCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A2183782629B51200053956 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7A14625F2629B5C9001E8E70 /* counting.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		7A5A284F2625D0D400361AE4 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +140,8 @@
 				7A5A28742625D0D500361AE4 /* ML Count WordsTests */,
 				7A5A287F2625D0D500361AE4 /* ML Count WordsUITests */,
 				7A5A28592625D0D400361AE4 /* Products */,
+				BBED180EF977926DC978034F /* Pods */,
+				1AB91F6E6CF889AB7962A8B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +158,7 @@
 		7A5A285A2625D0D400361AE4 /* ML Count Words */ = {
 			isa = PBXGroup;
 			children = (
+				7AE1DB0526283449005E91E5 /* WordCount */,
 				7A5A28AD26270C7C00361AE4 /* StoryBoards */,
 				7A5A28A22627049500361AE4 /* LoadFile */,
 				7A5A28972626BEBC00361AE4 /* Home */,
@@ -184,8 +236,40 @@
 			children = (
 				7A5A28612625D0D400361AE4 /* Main.storyboard */,
 				7A5A28AE26270C9900361AE4 /* LoadFile.storyboard */,
+				7AE1DB0926283491005E91E5 /* WordCount.storyboard */,
 			);
 			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		7AE1DB0526283449005E91E5 /* WordCount */ = {
+			isa = PBXGroup;
+			children = (
+				7A2183782629B51200053956 /* Animation */,
+				7A1628AE2629A02800645328 /* Model */,
+				7AE1DB0626283461005E91E5 /* UI */,
+			);
+			path = WordCount;
+			sourceTree = "<group>";
+		};
+		7AE1DB0626283461005E91E5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7AE1DB072628347A005E91E5 /* WordCountViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BBED180EF977926DC978034F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				293C30B33C2E81A9DB40374D /* Pods-ML Count Words.debug.xcconfig */,
+				B0235F880381C3EC4D83FFDA /* Pods-ML Count Words.release.xcconfig */,
+				8E7362A40576DC30ACBECC94 /* Pods-ML Count Words-ML Count WordsUITests.debug.xcconfig */,
+				AE4C0390AC9F64DC466B2787 /* Pods-ML Count Words-ML Count WordsUITests.release.xcconfig */,
+				2B0BF6DA7649EE6338C27167 /* Pods-ML Count WordsTests.debug.xcconfig */,
+				18E37F3B0C31F4F8F6DEBAA0 /* Pods-ML Count WordsTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +279,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A5A28852625D0D500361AE4 /* Build configuration list for PBXNativeTarget "ML Count Words" */;
 			buildPhases = (
+				FF1E6772C2A61880983ABA00 /* [CP] Check Pods Manifest.lock */,
 				7A5A28542625D0D400361AE4 /* Sources */,
 				7A5A28552625D0D400361AE4 /* Frameworks */,
 				7A5A28562625D0D400361AE4 /* Resources */,
+				44A9F5915E8C53A028C1B182 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,6 +298,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A5A28882625D0D500361AE4 /* Build configuration list for PBXNativeTarget "ML Count WordsTests" */;
 			buildPhases = (
+				75440224C132D02FE374CE30 /* [CP] Check Pods Manifest.lock */,
 				7A5A286D2625D0D500361AE4 /* Sources */,
 				7A5A286E2625D0D500361AE4 /* Frameworks */,
 				7A5A286F2625D0D500361AE4 /* Resources */,
@@ -230,9 +317,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A5A288B2625D0D500361AE4 /* Build configuration list for PBXNativeTarget "ML Count WordsUITests" */;
 			buildPhases = (
+				3A1DB48CD3C8E38766EFE364 /* [CP] Check Pods Manifest.lock */,
 				7A5A28782625D0D500361AE4 /* Sources */,
 				7A5A28792625D0D500361AE4 /* Frameworks */,
 				7A5A287A2625D0D500361AE4 /* Resources */,
+				7C4547A60163752F79BC69B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,9 +380,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AE1DB0A26283491005E91E5 /* WordCount.storyboard in Resources */,
 				7A5A286B2625D0D500361AE4 /* LaunchScreen.storyboard in Resources */,
 				7A5A28682625D0D500361AE4 /* Assets.xcassets in Resources */,
 				7A5A28AF26270C9900361AE4 /* LoadFile.storyboard in Resources */,
+				7A1462602629B5C9001E8E70 /* counting.json in Resources */,
 				7A5A28632625D0D400361AE4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +405,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A1DB48CD3C8E38766EFE364 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ML Count Words-ML Count WordsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44A9F5915E8C53A028C1B182 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ML Count Words/Pods-ML Count Words-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ML Count Words/Pods-ML Count Words-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ML Count Words/Pods-ML Count Words-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75440224C132D02FE374CE30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ML Count WordsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C4547A60163752F79BC69B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ML Count Words-ML Count WordsUITests/Pods-ML Count Words-ML Count WordsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ML Count Words-ML Count WordsUITests/Pods-ML Count Words-ML Count WordsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ML Count Words-ML Count WordsUITests/Pods-ML Count Words-ML Count WordsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF1E6772C2A61880983ABA00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ML Count Words-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A5A28542625D0D400361AE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -322,7 +516,9 @@
 				7A5A28602625D0D400361AE4 /* ViewController.swift in Sources */,
 				7A5A289A2626BF1200361AE4 /* CustomTableViewCell.swift in Sources */,
 				7A5A28A5262704C900361AE4 /* LoadFileViewController.swift in Sources */,
+				7AAC875F2629A8EC00136D0A /* ListOfWordsTableViewCell.swift in Sources */,
 				7A5A285C2625D0D400361AE4 /* AppDelegate.swift in Sources */,
+				7AE1DB082628347A005E91E5 /* WordCountViewController.swift in Sources */,
 				7A5A28662625D0D400361AE4 /* ML_Count_Words.xcdatamodeld in Sources */,
 				7A5A285E2625D0D400361AE4 /* SceneDelegate.swift in Sources */,
 			);
@@ -497,6 +693,7 @@
 		};
 		7A5A28862625D0D500361AE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 293C30B33C2E81A9DB40374D /* Pods-ML Count Words.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -516,6 +713,7 @@
 		};
 		7A5A28872625D0D500361AE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0235F880381C3EC4D83FFDA /* Pods-ML Count Words.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -535,6 +733,7 @@
 		};
 		7A5A28892625D0D500361AE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B0BF6DA7649EE6338C27167 /* Pods-ML Count WordsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -557,6 +756,7 @@
 		};
 		7A5A288A2625D0D500361AE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18E37F3B0C31F4F8F6DEBAA0 /* Pods-ML Count WordsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -579,6 +779,7 @@
 		};
 		7A5A288C2625D0D500361AE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E7362A40576DC30ACBECC94 /* Pods-ML Count Words-ML Count WordsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -599,6 +800,7 @@
 		};
 		7A5A288D2625D0D500361AE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE4C0390AC9F64DC466B2787 /* Pods-ML Count Words-ML Count WordsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

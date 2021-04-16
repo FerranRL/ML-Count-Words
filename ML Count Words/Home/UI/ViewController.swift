@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     let contentView = UIStackView()
     
     let header = UIView()
@@ -37,20 +41,6 @@ class ViewController: UIViewController {
         return imageview
     }()
     
-    let menuButton: UIButton = {
-        
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
-        let image = UIImage(named: "Menu Icon")
-        button.setImage(image , for: .normal)
-        button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(menu(sender:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 26).isActive = true
-        
-        return button
-        
-    }()
     
     let bienvenido: UILabel = {
         
@@ -94,7 +84,7 @@ class ViewController: UIViewController {
         button.backgroundColor = UIColor(named: "text_azul")
         button.setTitle("Cargar nuevo archivo", for: .normal)
         button.titleLabel?.textColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         button.layer.cornerRadius = 8
         button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(loadFile(sender:)), for: .touchUpInside)
@@ -107,6 +97,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         setupContentView()
@@ -145,9 +136,7 @@ class ViewController: UIViewController {
         homeImageView.topAnchor.constraint(equalTo: header.topAnchor, constant: 55).isActive = true
         homeImageView.centerXAnchor.constraint(equalTo: header.centerXAnchor).isActive = true
         
-        header.addSubview(menuButton)
-        menuButton.topAnchor.constraint(equalTo: header.topAnchor, constant: 50).isActive = true
-        menuButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 15).isActive = true
+
         
         header.addSubview(bienvenido)
         

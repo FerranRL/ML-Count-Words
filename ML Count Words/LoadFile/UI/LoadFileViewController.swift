@@ -7,8 +7,15 @@
 
 import UIKit
 import MobileCoreServices
+import Lottie
 
 class LoadFileViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    let animationView = AnimationView()
     
     let scrollView = UIScrollView()
     let contentView = UIStackView()
@@ -145,6 +152,18 @@ class LoadFileViewController: UIViewController {
         setupHeader()
         setupFromDevice()
         setupFromCloud()
+        setupAnimation()
+        
+    }
+    
+    private func setupAnimation() {
+        animationView.animation = Animation.named("counting")
+        animationView.backgroundColor = .white
+        animationView.frame = view.bounds
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        
         
     }
     
@@ -264,12 +283,14 @@ class LoadFileViewController: UIViewController {
     
     @objc func loadFile(sender: UIButton) {
         
-        print("Button tapped")
-        
         let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
-        present(documentPicker, animated: true, completion: nil)
+        
+        present(documentPicker, animated: true, completion: {
+            self.view.addSubview(self.animationView)
+            self.animationView.play()
+        })
         
     }
   
@@ -278,7 +299,9 @@ class LoadFileViewController: UIViewController {
 
 extension LoadFileViewController: UIDocumentPickerDelegate {
     
+    
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
         
         guard let selectedFileURL = urls.first else {
             return
@@ -286,19 +309,33 @@ extension LoadFileViewController: UIDocumentPickerDelegate {
         
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let sandboxFileURL = dir.appendingPathComponent(selectedFileURL.lastPathComponent)
-        print("La ruta es: \(sandboxFileURL)")
         if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
-            print("Ya está importado ese fichero")
+            
+            let stringText = try? String(contentsOf: sandboxFileURL, encoding: .utf8)
+            let nameOfFile = sandboxFileURL.lastPathComponent
+            goToCount(file: stringText!, name: nameOfFile)
+            
         } else {
             do {
+                
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
-                
-                
-                print("Archivo copiado")
+                let stringText = try String(contentsOf: sandboxFileURL, encoding: .utf8)
+                let nameOfFile = sandboxFileURL.lastPathComponent
+                goToCount(file: stringText, name: nameOfFile)
             } catch  {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    func goToCount(file: String, name: String) {
+        let storyBoard = UIStoryboard(name: "WordCount", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WordCount") as! WordCountViewController
+        vc.textOfFile = file
+        vc.nameOfFile = name
+        vc.modalPresentationStyle = .fullScreen
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
 }
