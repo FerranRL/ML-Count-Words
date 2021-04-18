@@ -32,8 +32,11 @@ class WordCountViewController: UIViewController {
     var filteredString = ""
     var stringArray:[String]!
     var wordCounts = [String: Int]()
+    var filteredWordCounts:[String:Int]!
     var keysArray:[String]!
     var valuesArray:[Int]!
+    var currentKeysDataSource:  [String] = []
+    var currentValuesDataSource:  [Int] = []
     
     var searchController: UISearchController!
     
@@ -50,7 +53,7 @@ class WordCountViewController: UIViewController {
     let homeButton: UIButton = {
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
-        let image = UIImage(systemName: "house.fill")
+        let image = UIImage(systemName: "chevron.backward")
         button.setImage(image , for: .normal)
         button.tintColor = .white
         button.isUserInteractionEnabled = true
@@ -136,12 +139,14 @@ class WordCountViewController: UIViewController {
         for word in words  {
             wordCounts[word, default: 0] += 1
         }
-        let filteredWordCounts = wordCounts.filter({!$0.key.isEmpty})
+        filteredWordCounts = wordCounts.filter({!$0.key.isEmpty})
         
         keysArray = Array(filteredWordCounts.keys)
         valuesArray = Array(filteredWordCounts.values)
         
-        
+        currentKeysDataSource = keysArray
+        currentValuesDataSource = valuesArray
+ 
     }
     
     private func setupScrollView() {
@@ -163,8 +168,6 @@ class WordCountViewController: UIViewController {
         scrollView.addSubview(contentView)
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
-
-
         contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -195,9 +198,7 @@ class WordCountViewController: UIViewController {
         header.addSubview(subTitleHeader)
         subTitleHeader.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -15).isActive = true
         subTitleHeader.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16).isActive = true
-        
-        
-        
+
         header.clipsToBounds = true
         
         contentView.addArrangedSubview(header)
@@ -210,12 +211,13 @@ class WordCountViewController: UIViewController {
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Buscar"
         searchController.searchBar.tintColor = UIColor(named: "mid_green")
         searchController.searchBar.backgroundColor = .white
-        
-        
+
         body.addSubview(searchController.searchBar)
         
         body.addSubview(tableView)
@@ -223,8 +225,8 @@ class WordCountViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: body.topAnchor, constant: 60).isActive = true
         tableView.leadingAnchor.constraint(equalTo: body.leadingAnchor, constant: 15).isActive = true
         tableView.trailingAnchor.constraint(equalTo: body.trailingAnchor, constant: -15).isActive = true
-        tableView.heightAnchor.constraint(equalTo: body.heightAnchor).isActive = true
-        //tableView.bottomAnchor.constraint(equalTo: body.bottomAnchor, constant: -10).isActive = true
+        //tableView.heightAnchor.constraint(equalTo: body.heightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: body.bottomAnchor).isActive = true
         tableView.delegate = self
         tableView.dataSource = self
         //tableView.separatorStyle = .none
@@ -233,7 +235,7 @@ class WordCountViewController: UIViewController {
         
 
         contentView.addArrangedSubview(body)
-        tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.7/3).isActive = true
+        body.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.7/3).isActive = true
         
         
     }
@@ -247,37 +249,80 @@ class WordCountViewController: UIViewController {
         return numberOfWords.count
     }
     
+    func filterCurrentDataSource(searchTerm: String) {
+        
+        if searchTerm.count > 0 {
+            
+            let data = filteredWordCounts
+            
+            let filteredResults = data!.filter{$0.key.replacingOccurrences(of: " ", with: "").contains(searchTerm.replacingOccurrences(of: " ", with: ""))}
+            
+            currentKeysDataSource = Array(filteredResults.keys)
+            currentValuesDataSource = Array(filteredResults.values)
+            
+            tableView.reloadData()
+       }
+    }
+    
+    func restoreCurrentDataSource() {
+        currentKeysDataSource = keysArray
+        currentValuesDataSource = valuesArray
+        
+        tableView.reloadData()
+    }
+    
     @objc private func menu(sender: UIButton) {
-        print("Menu tapped")
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "Home") as! ViewController
         vc.modalPresentationStyle = .fullScreen
         
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
-    
-
-
 }
 
 extension WordCountViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        if !searchController.isActive {
-            return
-        }
         
-        filteredString = searchController.searchBar.text!
+        if let searchText = searchController.searchBar.text {
+            filterCurrentDataSource(searchTerm: searchText)
+        }
+   }
+}
+
+extension WordCountViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let searchText = searchBar.text {
+            filterCurrentDataSource(searchTerm: searchText)
+        }
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //searchController.isActive = false
+        
+        if let searchText = searchBar.text, !searchText.isEmpty {
+            restoreCurrentDataSource()
+        }
+        
+        if let searchText = searchBar.text, searchText.isEmpty {
+            restoreCurrentDataSource()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            restoreCurrentDataSource()
+        }
+    }
     
 }
 
 extension WordCountViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        valuesArray.count
+        currentKeysDataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -290,18 +335,17 @@ extension WordCountViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.selectionStyle = .none
         
-        cell.wordLabel.text = "\"\(keysArray[indexPath.row])\""
+        cell.wordLabel.text = "\"\(currentKeysDataSource [indexPath.row])\""
         
-        if valuesArray[indexPath.row] == 1 {
-            cell.numberLabel.text = "\(valuesArray[indexPath.row]) vez en el documento"
+        if currentValuesDataSource[indexPath.row] == 1 {
+            cell.numberLabel.text = "\(currentValuesDataSource[indexPath.row]) vez en el documento"
         } else {
-            cell.numberLabel.text = "\(valuesArray[indexPath.row]) veces en el documento"
+            cell.numberLabel.text = "\(currentValuesDataSource[indexPath.row]) veces en el documento"
         }
 
         return cell
     }
-    
-    
+
 }
 
 extension StringProtocol {

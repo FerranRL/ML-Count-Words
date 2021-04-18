@@ -288,8 +288,9 @@ class LoadFileViewController: UIViewController {
         documentPicker.allowsMultipleSelection = false
         
         present(documentPicker, animated: true, completion: {
-            self.view.addSubview(self.animationView)
             self.animationView.play()
+            self.view.addSubview(self.animationView)
+            
         })
         
     }
@@ -335,7 +336,9 @@ extension LoadFileViewController: UIDocumentPickerDelegate {
         vc.nameOfFile = name
         vc.modalPresentationStyle = .fullScreen
         
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: {
+            self.animationView.removeFromSuperview()
+        })
     }
     
 }
