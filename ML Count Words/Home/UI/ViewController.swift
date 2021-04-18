@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     var fakeData = ["Uno", "Dos", "Tres"]
     
+    var namesData:[String] = []
+    
     let headerImageView: UIImageView = {
         let imageview = UIImageView()
         imageview.image = UIImage(named: "home_header")
@@ -98,17 +100,40 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        setupFolderNames()
         setupContentView()
         setupHeader()
         setupRecents()
         setupTableView()
     }
     
-    
-    
-    
+    private func setupFolderNames() {
+        
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        guard let directoryURL = URL(string: paths.path) else {return}
+        do {
+           let contents = try
+           FileManager.default.contentsOfDirectory(at: directoryURL,
+                  includingPropertiesForKeys:[.contentModificationDateKey],
+                  options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+               .filter { $0.lastPathComponent.hasSuffix("") }
+               .sorted(by: {
+                   let date0 = try $0.promisedItemResourceValues(forKeys:[.contentModificationDateKey]).contentModificationDate!
+                   let date1 = try $1.promisedItemResourceValues(forKeys:[.contentModificationDateKey]).contentModificationDate!
+                return date0.compare(date1) == .orderedDescending
+                })
+            
+            for item in contents {
+                guard (try? item.promisedItemResourceValues(forKeys:[.contentModificationDateKey]).contentModificationDate) != nil
+                    else {return}
+                namesData.append(item.lastPathComponent)
+            }
+        } catch {
+            print (error)
+        }
+        
+    }
+ 
     private func setupContentView() {
         contentView.axis = .vertical
         contentView.distribution = .fill
@@ -204,8 +229,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
+        return namesData.count    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 78
@@ -214,7 +238,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.selectionStyle = .none
-        cell.filename.text = fakeData[indexPath.row]
+        cell.filename.text = namesData[indexPath.row]
+        cell.numberOfWords.text = ""
         return cell
     }
     

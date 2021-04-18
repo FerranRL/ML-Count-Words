@@ -14,9 +14,7 @@ class WordCountViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-   
-    
+
     let scrollView = UIScrollView()
     let contentView = UIStackView()
     

@@ -143,10 +143,12 @@ class LoadFileViewController: UIViewController {
 
         return line
     }()
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        animationView.removeFromSuperview()
         setupScrollView()
         setupContentView()
         setupHeader()
@@ -290,20 +292,15 @@ class LoadFileViewController: UIViewController {
         present(documentPicker, animated: true, completion: {
             self.animationView.play()
             self.view.addSubview(self.animationView)
-            
         })
         
     }
-  
-
 }
 
 extension LoadFileViewController: UIDocumentPickerDelegate {
     
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        
-        
         guard let selectedFileURL = urls.first else {
             return
         }
@@ -318,7 +315,7 @@ extension LoadFileViewController: UIDocumentPickerDelegate {
             
         } else {
             do {
-                
+            
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
                 let stringText = try String(contentsOf: sandboxFileURL, encoding: .utf8)
                 let nameOfFile = sandboxFileURL.lastPathComponent
@@ -327,6 +324,10 @@ extension LoadFileViewController: UIDocumentPickerDelegate {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        self.animationView.removeFromSuperview()
     }
     
     func goToCount(file: String, name: String) {
