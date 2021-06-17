@@ -1,0 +1,6 @@
+framework module Pods_ML_Count_Words_ML_Count_WordsUITests {
+  umbrella header "Pods-ML Count Words-ML Count WordsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

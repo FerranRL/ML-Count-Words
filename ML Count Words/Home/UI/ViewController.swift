@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class ViewController: UIViewController {
     
@@ -13,16 +14,23 @@ class ViewController: UIViewController {
         return .lightContent
     }
     
+    var animationView = AnimationView()
+    
     let contentView = UIStackView()
     
     let header = UIView()
     let recents = UIView()
+    let whiteView = UIView()
     
     let tableview = UITableView()
     
     var fakeData = ["Uno", "Dos", "Tres"]
     
     var namesData:[String] = []
+    var stringsData:[String] = []
+    
+    var textOfFile = ""
+    var numberOfWords:[Int] = []
     
     let headerImageView: UIImageView = {
         let imageview = UIImageView()
@@ -105,6 +113,36 @@ class ViewController: UIViewController {
         setupHeader()
         setupRecents()
         setupTableView()
+        
+        
+  
+    }
+    
+    private func setupAnimationView() {
+        
+        contentView.addSubview(whiteView)
+        whiteView.frame = view.bounds
+        whiteView.backgroundColor = .white
+        whiteView.translatesAutoresizingMaskIntoConstraints = false
+        
+        animationView.animation = Animation.named("counting")
+        animationView.backgroundColor = .white
+        animationView.frame = self.view.bounds
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        whiteView.addSubview(animationView)
+        
+        
+
+        
+
+    }
+    
+    private func playAnimation() {
+        print("Entramos en la funcion de animacion")
+        tableview.addSubview(animationView)
+        animationView.play()
     }
     
     private func setupFolderNames() {
@@ -128,12 +166,13 @@ class ViewController: UIViewController {
                     else {return}
                 namesData.append(item.lastPathComponent)
             }
+
         } catch {
             print (error)
         }
         
     }
- 
+    
     private func setupContentView() {
         contentView.axis = .vertical
         contentView.distribution = .fill
@@ -207,6 +246,7 @@ class ViewController: UIViewController {
         tableview.dataSource = self
         tableview.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         tableview.separatorStyle = .none
+        
     }
     
     @objc private func menu(sender: UIButton) {
@@ -229,7 +269,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return namesData.count    }
+        if namesData.count <= 3 {
+            return namesData.count
+        } else{
+            return 3
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 78
@@ -239,12 +284,26 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.selectionStyle = .none
         cell.filename.text = namesData[indexPath.row]
-        cell.numberOfWords.text = ""
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Celda seleccionada")
+        
+        DispatchQueue.main.async {
+            self.setupAnimationView()
+        }
+        
+            print("iniciamos el proceso")
+            self.setupAnimationView()
+            let storyBoard = UIStoryboard(name: "WordCount", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "WordCount") as! WordCountViewController
+            vc.nameOfFile = self.namesData[indexPath.row]
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion:{
+                self.animationView.removeFromSuperview()
+            })
+        
+       
     }
 }
 

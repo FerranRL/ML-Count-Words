@@ -285,13 +285,14 @@ class LoadFileViewController: UIViewController {
     
     @objc func loadFile(sender: UIButton) {
         
+        
         let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         
         present(documentPicker, animated: true, completion: {
-            self.animationView.play()
             self.view.addSubview(self.animationView)
+            self.animationView.play()
         })
         
     }

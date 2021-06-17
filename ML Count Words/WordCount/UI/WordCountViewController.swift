@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 
 class WordCountViewController: UIViewController {
@@ -15,11 +16,14 @@ class WordCountViewController: UIViewController {
         return .lightContent
     }
 
+    let animationView = AnimationView()
+
     let scrollView = UIScrollView()
     let contentView = UIStackView()
     
     let header = UIView()
     let body = UIView()
+    let footer = UIView()
     
     
     let tableView = UITableView()
@@ -97,24 +101,84 @@ class WordCountViewController: UIViewController {
         return label
         
     }()
+    
+    let lottieAnimationText: UILabel = {
+        
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 36, weight: .bold)
+        label.textColor = UIColor(named: "text_azul")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Contando Palabras...."
 
+        return label
+        
+    }()
+    
+    let segmentedController: UISegmentedControl = {
+        
+        let segmented = UISegmentedControl(items: ["A-Z", "Posición","Apariciones"])
+        segmented.selectedSegmentIndex = 0
+        segmented.addTarget(self, action: #selector(sortTableView(_:)), for: .valueChanged)
+        segmented.layer.cornerRadius = 5
+        segmented.backgroundColor = UIColor(named: "text_azul")
+        segmented.tintColor = .white
+        segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white] , for: .normal)
+        segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor(named: "text_azul")!], for: .selected)
+        segmented.translatesAutoresizingMaskIntoConstraints = false
+        
+
+        return segmented
+        
+    }()
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData()
+        
+        DispatchQueue.main.async {
+            self.setData()
+        }
+        
         setupScrollView()
         setupContentView()
         setupHeader()
         setupTableView()
+        setupFooter()
+        
+  
+    }
+    
+    private func setupAnimationView() {
         
         
+        animationView.animation = Animation.named("counting")
+        animationView.backgroundColor = .white
+        animationView.frame = view.bounds
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        contentView.addSubview(animationView)
+        animationView.play()
+        contentView.addSubview(lottieAnimationText)
+        lottieAnimationText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -60).isActive = true
+        lottieAnimationText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
     
 
     private func setData() {
-        
         titleHeader.text = nameOfFile
-        
-        
+       
+        if textOfFile == "" {
+            let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            do {
+                let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
+                let selectedFile = directoryContents.filter{$0.lastPathComponent.contains(nameOfFile)}
+                let stringText = try? String(contentsOf: selectedFile[0], encoding: .utf8)
+                textOfFile = stringText!
+            } catch {
+                print(error)
+            }
+        }
         while let rangeToReplace = textOfFile.range(of: "\n") {
             textOfFile.replaceSubrange(rangeToReplace, with: " ")
         }
@@ -144,6 +208,9 @@ class WordCountViewController: UIViewController {
         
         currentKeysDataSource = keysArray
         currentValuesDataSource = valuesArray
+        
+        animationView.removeFromSuperview()
+        
  
     }
     
@@ -170,6 +237,8 @@ class WordCountViewController: UIViewController {
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
+        
     }
     
     private func setupHeader() {
@@ -223,18 +292,27 @@ class WordCountViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: body.topAnchor, constant: 60).isActive = true
         tableView.leadingAnchor.constraint(equalTo: body.leadingAnchor, constant: 15).isActive = true
         tableView.trailingAnchor.constraint(equalTo: body.trailingAnchor, constant: -15).isActive = true
-        //tableView.heightAnchor.constraint(equalTo: body.heightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: body.bottomAnchor).isActive = true
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         tableView.register(ListOfWordsTableViewCell.self, forCellReuseIdentifier: "cell")
         
 
         contentView.addArrangedSubview(body)
         body.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.7/3).isActive = true
+        animationView.removeFromSuperview()
+   
+    }
+    
+    private func setupFooter() {
         
+        footer.addSubview(segmentedController)
+        segmentedController.topAnchor.constraint(equalTo: footer.topAnchor, constant: 20).isActive = true
+        segmentedController.centerXAnchor.constraint(equalTo: footer.centerXAnchor).isActive = true
+        
+        contentView.addArrangedSubview(footer)
+        footer.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
     }
     
@@ -276,6 +354,19 @@ class WordCountViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc private func sortTableView(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            print("A-Z");
+        case 1:
+            print("Posición")
+        case 2:
+            print("Apariciones")
+        default:
+            break
+        }
     }
 }
 
@@ -343,6 +434,8 @@ extension WordCountViewController: UITableViewDataSource, UITableViewDelegate {
 
         return cell
     }
+    
+    
 
 }
 

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Lottie
 
 class CustomTableViewCell: UITableViewCell {
+    
+    var animationView = AnimationView()
     
     let imageCell: UIImageView = {
         let imageView = UIImageView()
@@ -60,12 +63,13 @@ class CustomTableViewCell: UITableViewCell {
         imageCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         
         contentView.addSubview(filename)
-        filename.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+        filename.centerYAnchor.constraint(equalTo: imageCell.centerYAnchor).isActive = true
         filename.leadingAnchor.constraint(equalTo: imageCell.trailingAnchor, constant: 16).isActive = true
+        filename.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -100).isActive = true
         
-        contentView.addSubview(numberOfWords)
-        numberOfWords.topAnchor.constraint(equalTo: filename.bottomAnchor, constant: 7).isActive = true
-        numberOfWords.leadingAnchor.constraint(equalTo: filename.leadingAnchor).isActive = true
+//        contentView.addSubview(numberOfWords)
+//        numberOfWords.topAnchor.constraint(equalTo: filename.bottomAnchor, constant: 7).isActive = true
+//        numberOfWords.leadingAnchor.constraint(equalTo: filename.leadingAnchor).isActive = true
         
         contentView.addSubview(chevron)
         chevron.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
@@ -76,6 +80,23 @@ class CustomTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupAnimationView() {
+        
+        
+        
+        animationView.animation = Animation.named("counting")
+        animationView.backgroundColor = .white
+        //animationView.frame
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        contentView.addSubview(animationView)
+        animationView.play()
+        
+
+        
+
     }
     
     override func layoutSubviews() {
